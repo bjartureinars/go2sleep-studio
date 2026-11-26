@@ -1,0 +1,25 @@
+# --- personal health data and logs (never upload) ---
+data/
+*.log
+history.html
+nights.json
+
+# --- third-party code / binaries we must not redistribute ---
+research/apk/
+research/apk3/
+research/tools/
+reference/
+.agents/
+.claude/
+skills-lock.json
+
+# --- environments and build output ---
+.venv/
+__pycache__/
+app/build/
+app/build.noindex/
+app/bootstrap/
+*.xcuserstate
+xcuserdata/
+.DS_Store
+*.profraw

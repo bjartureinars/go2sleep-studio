@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		049B0FFCAE3B17C0BE753959 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81670704763609D36DF8D5F8 /* Snapshot.swift */; };
+		0CE949AA2F59E4A04756853A /* DeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F6935FC1B3702E0D42DA7 /* DeviceView.swift */; };
+		12F100AD774D995A6690A237 /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F41F435670C3B81CB146B52 /* LiveView.swift */; };
+		170CA8D734CFC889814C4562 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FE59B916DBC02D0E8099A82 /* Assets.xcassets */; };
+		33E8043D9EB32D41135CBC73 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE42DB04B066621881ABB13 /* App.swift */; };
+		62EAE9E7710F52360D700A34 /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB2FD8F6F9B3AC72AF5FBB5 /* TrendsView.swift */; };
+		6C3163F0FE864F8CE6ECA566 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C809EA96602CB2FE00E1C /* DataStore.swift */; };
+		8171C7E2B5527CBDDA02DA98 /* MenuBarPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30273B059346B45A643F3CAF /* MenuBarPanel.swift */; };
+		99C829A327A4BE568129C72A /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962CABB5447A189F019FE841 /* Components.swift */; };
+		A22FF6CB7D3746957E0D14F5 /* RingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F009B53210A1FD973F6AB1 /* RingManager.swift */; };
+		B37295ACB0F8B01B2810BB9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA282E404DBAA9AB36DA6357 /* ContentView.swift */; };
+		C38B7015686C8B31FB5975BA /* SleepEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B016024B8913AA06D4D8896C /* SleepEngine.swift */; };
+		C552E5AD0787149A7002C65D /* NightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8D577FA015173B90D8DF4D /* NightView.swift */; };
+		DAA35931117E06B916DF084D /* Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60748642D2C6200FEEE65E03 /* Diagnostics.swift */; };
+		E622157C30B3CA41DE92B3EC /* RingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B656E77DB65A8312D6ECB /* RingProtocol.swift */; };
+		E63361EEC23BBE94FE1D4826 /* LabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C383E0C192BAC9332AFFCFB3 /* LabView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A67C5F039463718DD53469C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4437F9530FCBCF21B43F2B66 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FD9C831B739095D95DDC8808;
+			remoteInfo = Go2SleepStudio;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F41F435670C3B81CB146B52 /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
+		0FE59B916DBC02D0E8099A82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		14A90A1EF0A607FDBBC4BA9B /* Go2SleepStudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Go2SleepStudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E8D577FA015173B90D8DF4D /* NightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightView.swift; sourceTree = "<group>"; };
+		30273B059346B45A643F3CAF /* MenuBarPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarPanel.swift; sourceTree = "<group>"; };
+		44F009B53210A1FD973F6AB1 /* RingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingManager.swift; sourceTree = "<group>"; };
+		467CBDAED8E8190EC28B7F76 /* Go2SleepStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Go2SleepStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A8F6935FC1B3702E0D42DA7 /* DeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceView.swift; sourceTree = "<group>"; };
+		575B656E77DB65A8312D6ECB /* RingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProtocol.swift; sourceTree = "<group>"; };
+		60748642D2C6200FEEE65E03 /* Diagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagnostics.swift; sourceTree = "<group>"; };
+		6CB2FD8F6F9B3AC72AF5FBB5 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
+		81670704763609D36DF8D5F8 /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
+		8DE42DB04B066621881ABB13 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		962CABB5447A189F019FE841 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		A09C809EA96602CB2FE00E1C /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		B016024B8913AA06D4D8896C /* SleepEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepEngine.swift; sourceTree = "<group>"; };
+		C383E0C192BAC9332AFFCFB3 /* LabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabView.swift; sourceTree = "<group>"; };
+		EA282E404DBAA9AB36DA6357 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0CB251514ACF08A8AD548EF2 /* Go2SleepStudioTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Go2SleepStudioTests;
+			sourceTree = "<group>";
+		};
+		3F0372464D193ADCA9C7389E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0FE59B916DBC02D0E8099A82 /* Assets.xcassets */,
+			);
+			name = Resources;
+			path = Go2SleepStudio/Resources;
+			sourceTree = "<group>";
+		};
+		AF7B5865E3C78AC8B1DAC462 = {
+			isa = PBXGroup;
+			children = (
+				0CB251514ACF08A8AD548EF2 /* Go2SleepStudioTests */,
+				3F0372464D193ADCA9C7389E /* Resources */,
+				E5D832E7B5DABF566DCEC64C /* Sources */,
+				CCB951827F78B1273F711780 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CCB951827F78B1273F711780 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				467CBDAED8E8190EC28B7F76 /* Go2SleepStudio.app */,
+				14A90A1EF0A607FDBBC4BA9B /* Go2SleepStudioTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0177E62A6F36CDB64255498 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				962CABB5447A189F019FE841 /* Components.swift */,
+				EA282E404DBAA9AB36DA6357 /* ContentView.swift */,
+				4A8F6935FC1B3702E0D42DA7 /* DeviceView.swift */,
+				C383E0C192BAC9332AFFCFB3 /* LabView.swift */,
+				0F41F435670C3B81CB146B52 /* LiveView.swift */,
+				30273B059346B45A643F3CAF /* MenuBarPanel.swift */,
+				1E8D577FA015173B90D8DF4D /* NightView.swift */,
+				6CB2FD8F6F9B3AC72AF5FBB5 /* TrendsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5D832E7B5DABF566DCEC64C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8DE42DB04B066621881ABB13 /* App.swift */,
+				81670704763609D36DF8D5F8 /* Snapshot.swift */,
+				F9EA6B4AC33D6A63F3B6B62E /* Model */,
+				D0177E62A6F36CDB64255498 /* Views */,
+			);
+			name = Sources;
+			path = Go2SleepStudio/Sources;
+			sourceTree = "<group>";
+		};
+		F9EA6B4AC33D6A63F3B6B62E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A09C809EA96602CB2FE00E1C /* DataStore.swift */,
+				60748642D2C6200FEEE65E03 /* Diagnostics.swift */,
+				44F009B53210A1FD973F6AB1 /* RingManager.swift */,
+				575B656E77DB65A8312D6ECB /* RingProtocol.swift */,
+				B016024B8913AA06D4D8896C /* SleepEngine.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5172FB630550205D4BE0647E /* Go2SleepStudioTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84D71FE1865400B7B1C91803 /* Build configuration list for PBXNativeTarget "Go2SleepStudioTests" */;
+			buildPhases = (
+				6B1A7E841ED2C36FACFCA15A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46AD4960449F9E163BB4456C /* PBXTargetDependency */,
+			);
+			name = Go2SleepStudioTests;
+			packageProductDependencies = (
+			);
+			productName = Go2SleepStudioTests;
+			productReference = 14A90A1EF0A607FDBBC4BA9B /* Go2SleepStudioTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FD9C831B739095D95DDC8808 /* Go2SleepStudio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 354F6995A3C0438E2F974911 /* Build configuration list for PBXNativeTarget "Go2SleepStudio" */;
+			buildPhases = (
+				5D3D46F561C3D809617A8E88 /* Sources */,
+				C09A3847D31F13A2BFCD3D13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Go2SleepStudio;
+			packageProductDependencies = (
+			);
+			productName = Go2SleepStudio;
+			productReference = 467CBDAED8E8190EC28B7F76 /* Go2SleepStudio.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4437F9530FCBCF21B43F2B66 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					5172FB630550205D4BE0647E = {
+						DevelopmentTeam = 9U953J4FPN;
+						ProvisioningStyle = Manual;
+					};
+					FD9C831B739095D95DDC8808 = {
+						DevelopmentTeam = 9U953J4FPN;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 89FBD6B8F32590391E02A014 /* Build configuration list for PBXProject "Go2SleepStudio" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AF7B5865E3C78AC8B1DAC462;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = CCB951827F78B1273F711780 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD9C831B739095D95DDC8808 /* Go2SleepStudio */,
+				5172FB630550205D4BE0647E /* Go2SleepStudioTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C09A3847D31F13A2BFCD3D13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				170CA8D734CFC889814C4562 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5D3D46F561C3D809617A8E88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33E8043D9EB32D41135CBC73 /* App.swift in Sources */,
+				99C829A327A4BE568129C72A /* Components.swift in Sources */,
+				B37295ACB0F8B01B2810BB9A /* ContentView.swift in Sources */,
+				6C3163F0FE864F8CE6ECA566 /* DataStore.swift in Sources */,
+				0CE949AA2F59E4A04756853A /* DeviceView.swift in Sources */,
+				DAA35931117E06B916DF084D /* Diagnostics.swift in Sources */,
+				E63361EEC23BBE94FE1D4826 /* LabView.swift in Sources */,
+				12F100AD774D995A6690A237 /* LiveView.swift in Sources */,
+				8171C7E2B5527CBDDA02DA98 /* MenuBarPanel.swift in Sources */,
+				C552E5AD0787149A7002C65D /* NightView.swift in Sources */,
+				A22FF6CB7D3746957E0D14F5 /* RingManager.swift in Sources */,
+				E622157C30B3CA41DE92B3EC /* RingProtocol.swift in Sources */,
+				C38B7015686C8B31FB5975BA /* SleepEngine.swift in Sources */,
+				049B0FFCAE3B17C0BE753959 /* Snapshot.swift in Sources */,
+				62EAE9E7710F52360D700A34 /* TrendsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B1A7E841ED2C36FACFCA15A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46AD4960449F9E163BB4456C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FD9C831B739095D95DDC8808 /* Go2SleepStudio */;
+			targetProxy = A67C5F039463718DD53469C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		018C93D5F004DF1F1D1AC308 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: Biartur EINARSSON (WJ5M5RC4W2)";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9U953J4FPN;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1B18C3FDC18A23EE313A56FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Go2SleepStudio/Go2SleepStudio.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_NAME = Go2SleepStudio;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Go2SleepStudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bjartur.Go2SleepStudio;
+				PRODUCT_NAME = "Go2Sleep Studio";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5967F366F155ADCBC2B93C63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bjartur.Go2SleepStudioTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Go2Sleep Studio.app/Contents/MacOS/Go2SleepStudio";
+			};
+			name = Release;
+		};
+		94905BE347D0107F0249B1E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bjartur.Go2SleepStudioTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Go2Sleep Studio.app/Contents/MacOS/Go2SleepStudio";
+			};
+			name = Debug;
+		};
+		A440F2667D93F8F61C960402 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Go2SleepStudio/Go2SleepStudio.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_NAME = Go2SleepStudio;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Go2SleepStudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bjartur.Go2SleepStudio;
+				PRODUCT_NAME = "Go2Sleep Studio";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FB98417D4676FAFAE8446220 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: Biartur EINARSSON (WJ5M5RC4W2)";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9U953J4FPN;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		354F6995A3C0438E2F974911 /* Build configuration list for PBXNativeTarget "Go2SleepStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A440F2667D93F8F61C960402 /* Debug */,
+				1B18C3FDC18A23EE313A56FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		84D71FE1865400B7B1C91803 /* Build configuration list for PBXNativeTarget "Go2SleepStudioTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94905BE347D0107F0249B1E0 /* Debug */,
+				5967F366F155ADCBC2B93C63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		89FBD6B8F32590391E02A014 /* Build configuration list for PBXProject "Go2SleepStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				018C93D5F004DF1F1D1AC308 /* Debug */,
+				FB98417D4676FAFAE8446220 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4437F9530FCBCF21B43F2B66 /* Project object */;
+}

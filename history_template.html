@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Go2Sleep History</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--ink:#14171c;--mute:#6b7280;--line:#e3e6eb;--hr:#e5484d;--o2:#2f7de1;--mo:#d98a00;--x10:#17a673;--sl:#8a5cf6;--warn:#e5484d}
+@media(prefers-color-scheme:dark){:root{--bg:#0e1116;--card:#171b22;--ink:#e8ebf0;--mute:#8b94a3;--line:#262c36;--hr:#ff6b70;--o2:#5aa2ff;--mo:#f0b13a;--x10:#3ecf9a;--sl:#a98bff;--warn:#ff6b70}}
+*{box-sizing:border-box}
+body{margin:0 auto;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,system-ui,sans-serif;padding:16px;max-width:1100px}
+h1{font-size:18px;margin:0 0 12px;font-weight:650}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tab{padding:5px 11px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+.tab[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.lbl{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+.val{font-size:24px;font-weight:650;font-variant-numeric:tabular-nums}
+.val small{font-size:12px;color:var(--mute);font-weight:500;margin-left:3px}
+.chart{position:relative;margin-bottom:10px}
+.chart .lbl{display:flex;justify-content:space-between}
+.chart .rd{font-variant-numeric:tabular-nums;text-transform:none;letter-spacing:0;color:var(--ink);font-weight:600}
+canvas{width:100%;height:120px;display:block;cursor:crosshair}
+.bar{display:flex;gap:10px;align-items:center;margin:4px 0 12px;color:var(--mute);font-size:13px}
+button.reset{font:inherit;font-size:12px;padding:3px 9px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;cursor:pointer}
+.badge{display:inline-block;font-size:11px;padding:1px 7px;border-radius:99px;background:var(--mo);color:#000;margin-left:8px;vertical-align:middle}
+.note{color:var(--mute);font-size:12.5px;margin-top:6px}
+</style>
+</head>
+<body>
+<h1>Go2Sleep history<span class="badge">staging experimental</span></h1>
+<div class="tabs" id="tabs" role="tablist"></div>
+<div class="grid" id="stats"></div>
+<div class="bar"><span id="range"></span><button class="reset" id="reset" hidden>Reset zoom</button><span>Drag on a chart to zoom</span></div>
+<div id="charts"></div>
+<div class="note" id="note"></div>
+<script>
+const D=/*DATA*/;
+const HYP=['Deep','Light','REM','Wake'];
+const SERIES=[
+ {k:'stage',name:'Sleep stages — experimental (wake/sleep: motion-based; light/deep/REM: exploratory, unvalidated)',unit:'',c:'--o2',cat:true},
+ {k:'hr',name:'Heart rate',unit:'bpm',c:'--hr',nz:true},
+ {k:'spo2',name:'SpO₂ (lowest per 10 s)',unit:'%',c:'--o2',nz:true,ref:90},
+ {k:'motion',name:'Motion (x8, max per 10 s)',unit:'',c:'--mo'},
+ {k:'x10',name:'x10 — activity/roughness-like signal (unidentified; higher in motion & wake, lower in deep)',unit:'',c:'--x10'},
+ {k:'slow',name:'S — optical-baseline-like signal (record-index ramp removed)',unit:'',c:'--sl'}];
+const $=id=>document.getElementById(id),css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+let cur=0,view=null,hover=null,drag=null;
+const fmt=s=>new Date(s*1000).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+function tabs(){ $('tabs').innerHTML=''; D.nights.forEach((n,i)=>{const b=document.createElement('button');b.className='tab';b.role='tab';b.textContent=n.label;b.setAttribute('aria-selected',i===cur);b.onclick=()=>{cur=i;view=null;render()};$('tabs').appendChild(b)}) }
+function stats(){const s=D.nights[cur].stats,items=[['Time asleep',(s.tst_min/60).toFixed(1),'h'],['Efficiency',s.eff,'%'],['Onset',s.onset_min,'min'],['Awake after onset',s.waso_min,'min'],['Light',s.light_pct,'%'],['Deep',s.deep_pct,'%'],['REM',s.rem_pct,'%'],['ODI-3',s.odi3,'/h'],['Recorded',s.hours,'h'],['Avg HR',s.hr_avg,'bpm'],['Min HR',s.hr_min,'bpm'],['Avg SpO₂',s.spo2_avg,'%'],['Min SpO₂',s.spo2_min,'%'],['Time < 90%',s.under90,'s'],['Time < 94%',(s.under94/60).toFixed(1),'min']];
+ $('stats').innerHTML=items.map(([l,v,u])=>`<div class="card"><div class="lbl">${l}</div><div class="val">${v}<small>${u}</small></div></div>`).join('')}
+function build(){ const box=$('charts'); box.innerHTML=''; SERIES.forEach(s=>{const d=document.createElement('div');d.className='card chart';d.innerHTML=`<div class="lbl"><span>${s.name}</span><span class="rd" id="rd_${s.k}"></span></div><canvas id="cv_${s.k}"></canvas>`;box.appendChild(d);
+ const cv=d.querySelector('canvas');
+ const xOf=e=>{const r=cv.getBoundingClientRect();return Math.min(1,Math.max(0,(e.clientX-r.left-40)/(r.width-46)))};
+ cv.onmousemove=e=>{hover=xOf(e);if(drag)drag.b=hover;draw()};
+ cv.onmouseleave=()=>{hover=null;drag=null;draw()};
+ cv.onmousedown=e=>{drag={a:xOf(e),b:xOf(e)}};
+ cv.onmouseup=()=>{if(drag&&Math.abs(drag.a-drag.b)>.01){const n=D.nights[cur],[v0,v1]=view||[0,n.hr.length-1],lo=Math.min(drag.a,drag.b),hi=Math.max(drag.a,drag.b);view=[Math.round(v0+(v1-v0)*lo),Math.round(v0+(v1-v0)*hi)]}drag=null;draw()};
+ })}
+function draw(){const n=D.nights[cur],len=n.hr.length,[v0,v1]=view||[0,len-1];
+ $('reset').hidden=!view;$('range').textContent=`${fmt(n.start+v0*n.step)} – ${fmt(n.start+v1*n.step)}`;
+ SERIES.forEach(s=>{const cv=$('cv_'+s.k),dpr=devicePixelRatio||1,w=cv.clientWidth,h=cv.clientHeight;cv.width=w*dpr;cv.height=h*dpr;const g=cv.getContext('2d');g.scale(dpr,dpr);
+  const L=40,R=6,T=6,B=16,pw=w-L-R,ph=h-T-B,a=n[s.k],X0=i=>L+pw*(i-v0)/Math.max(1,v1-v0);
+  if(s.cat){const cols=[css('--sl'),css('--o2'),css('--x10'),css('--mo')];g.font='11px system-ui';for(let r=0;r<4;r++){const y=T+ph*(1-(r+.5)/4);g.fillStyle=css('--mute');g.fillText(HYP[r],2,y+4);g.strokeStyle=css('--line');g.beginPath();g.moveTo(L,T+ph*(1-r/4));g.lineTo(w-R,T+ph*(1-r/4));g.stroke()}
+   const bw=Math.max(1,pw/Math.max(1,v1-v0)*1.02);for(let i=v0;i<=v1;i++){const v=a[i];if(v==null)continue;g.fillStyle=cols[v];g.fillRect(X0(i),T+ph*(1-(v+1)/4)+1,bw,ph/4-2)}
+   const tk2=6;g.fillStyle=css('--mute');for(let k=0;k<=tk2;k++){const i=v0+(v1-v0)*k/tk2;g.fillText(fmt(n.start+i*n.step),L+pw*k/tk2-14,h-3)}
+   const rd0=$('rd_'+s.k);if(hover!=null){const i=Math.round(v0+(v1-v0)*hover);rd0.textContent=`${fmt(n.start+i*n.step)}  ${a[i]==null?'–':HYP[a[i]]}`}else rd0.textContent='';return}
+  let lo=Infinity,hi=-Infinity;for(let i=v0;i<=v1;i++){const v=a[i];if(v==null)continue;if(v<lo)lo=v;if(v>hi)hi=v}
+  if(lo===Infinity){lo=0;hi=1}if(hi-lo<2){hi=lo+2}if(s.ref){lo=Math.min(lo,s.ref-1)}const pad=(hi-lo)*.08;lo-=pad;hi+=pad;if(!s.nz&&lo<0)lo=0;
+  const X=i=>L+pw*(i-v0)/Math.max(1,v1-v0),Y=v=>T+ph*(1-(v-lo)/(hi-lo));
+  g.font='11px system-ui';g.fillStyle=css('--mute');g.strokeStyle=css('--line');g.lineWidth=1;
+  for(let k=0;k<=2;k++){const y=T+ph*k/2;g.beginPath();g.moveTo(L,y);g.lineTo(w-R,y);g.stroke();g.fillText((hi-(hi-lo)*k/2).toFixed(hi-lo<8?1:0),2,y+4)}
+  const tk=6;for(let k=0;k<=tk;k++){const i=v0+(v1-v0)*k/tk;g.fillText(fmt(n.start+i*n.step),L+pw*k/tk-14,h-3)}
+  if(s.ref&&s.ref>lo&&s.ref<hi){g.strokeStyle=css('--warn');g.setLineDash([4,4]);g.beginPath();g.moveTo(L,Y(s.ref));g.lineTo(w-R,Y(s.ref));g.stroke();g.setLineDash([])}
+  g.strokeStyle=css(s.c);g.lineWidth=1.5;g.beginPath();let pen=false,step=Math.max(1,Math.floor((v1-v0)/pw));
+  for(let i=v0;i<=v1;i+=step){const v=a[i];if(v==null){pen=false;continue}pen?g.lineTo(X(i),Y(v)):g.moveTo(X(i),Y(v));pen=true}g.stroke();
+  if(drag){g.fillStyle=css(s.c);g.globalAlpha=.15;const x0=L+pw*Math.min(drag.a,drag.b),x1=L+pw*Math.max(drag.a,drag.b);g.fillRect(x0,T,x1-x0,ph);g.globalAlpha=1}
+  const rd=$('rd_'+s.k);
+  if(hover!=null){const i=Math.round(v0+(v1-v0)*hover);g.strokeStyle=css('--mute');g.beginPath();g.moveTo(X(i),T);g.lineTo(X(i),T+ph);g.stroke();rd.textContent=`${fmt(n.start+i*n.step)}  ${a[i]==null?'–':a[i]} ${s.unit}`}else rd.textContent='';
+ })}
+function render(){tabs();stats();build();draw();$('note').textContent='Staging is experimental and unvalidated: it uses only heart rate and motion, and there is no ground truth for this ring. Wake vs sleep is calibrated on how heart rate responds to movement; light/deep/REM are weak (REM is likely under-detected). The 4-minute sawtooth seen earlier in S was an artifact (a +1/record ramp from the record counter) and is removed here. Signals come from the ring\'s stored per-second records, downsampled to 10 s. Motion is inferred (bursty; heart rate rises after bursts); S and x10 are characterized but their physical meaning is not confirmed.'+(D.skipped.length?'  Excluded short sessions: '+D.skipped.join(', ')+'.':'')}
+$('reset').onclick=()=>{view=null;draw()};addEventListener('resize',draw);
+render();
+</script>
+</body>
+</html>

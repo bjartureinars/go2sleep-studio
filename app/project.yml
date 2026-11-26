@@ -1,0 +1,38 @@
+name: Go2SleepStudio
+options:
+  bundleIdPrefix: com.bjartur
+  deploymentTarget:
+    macOS: "14.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: 9U953J4FPN
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "Apple Development: Biartur EINARSSON (WJ5M5RC4W2)"
+    ENABLE_HARDENED_RUNTIME: YES
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+targets:
+  Go2SleepStudio:
+    type: application
+    platform: macOS
+    sources: [Go2SleepStudio/Sources, Go2SleepStudio/Resources]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.bjartur.Go2SleepStudio
+        PRODUCT_NAME: "Go2Sleep Studio"
+        EXECUTABLE_NAME: Go2SleepStudio
+        INFOPLIST_FILE: Go2SleepStudio/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Go2SleepStudio/Go2SleepStudio.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: NO
+  Go2SleepStudioTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources: [Go2SleepStudioTests]
+    dependencies:
+      - target: Go2SleepStudio
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Go2Sleep Studio.app/Contents/MacOS/Go2SleepStudio"
